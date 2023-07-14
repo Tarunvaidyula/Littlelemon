@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'restaurant',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +77,8 @@ WSGI_APPLICATION = 'littlelemon.wsgi.application'
 
 DATABASES = {
     'default':{
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': BASE_DIR / 'my_db',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'my_db.sqlite3',
     },
     
     'mydb': {  
@@ -134,3 +135,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+rest_framework= {
+    'default_renderer_classes':[
+        'rest_framework.renderers.Jsonrenderer',
+        'rest_framework.renderers.browsableapirenderer',
+         'rest_framework_xml.renderers.xmlrenderer',
+    ],
+    'default_authentication_classes':(
+        'rest_framework.authentication.tokenauthentication',
+    ),
+
+}
